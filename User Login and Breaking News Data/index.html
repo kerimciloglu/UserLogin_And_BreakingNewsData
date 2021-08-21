@@ -1,0 +1,46 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Staj Ödev 4</title>
+		<link rel="stylesheet" href="index.css">
+		<script type="text/JavaScript"></script>
+		<script>
+		function gir(){
+			var user = document.getElementById("user").value;
+			var password = document.getElementById("password").value;
+				if(user=="admin" && password=="123" ){
+					$('#popup').popup();
+					setTimeout(function(){
+					window.location="admin.html";},3500);
+			}				
+				else{
+				alert("Kullanıcı Adı veya Şifre hatalı!");
+				}			
+			}		
+		</script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/vast-engineering/jquery-popup-overlay@2/jquery.popupoverlay.min.js"></script>
+	</head>
+<body>
+	<div id="sayfa">
+		<div id="yonetimpanel">
+			<img src="stajimage\user.png" alt="Profil" title="Profil">
+			
+			<p><b>Kullanıcı Adı:</b></p>
+			<input placeholder="Kullanıcı Adı" name="user" id="user" type="text"/>
+			
+			<p><b>Şifre:</b></p>
+			<input placeholder="Şifre" name="password" id="password" type="password"/><br><br>
+			
+			<button class="popup_open" onclick="gir()">Giriş Yap</button>
+			
+<div id="popup">
+  <h1>YÖNLENDİRİLİYORSUNUZ!</h1>
+</div> 
+ 
+	</div>
+</body>
+</html>	

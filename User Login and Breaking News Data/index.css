@@ -1,0 +1,124 @@
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+#sayfa{
+	width: 600px;
+	height:600px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: rgb(122,151,290);
+	margin: auto;
+	background-color: rgb(122,151,209);
+}
+
+#yonetimpanel{
+	margin: auto;
+	width: 200px;
+	height: 400px;
+	padding: 37px 35px 0px 25px;
+}
+
+#yonetimpanel input[type=text], input[type=password]{
+	width: 200px;
+	padding: 0px 5px 0px 5px;
+	height: 40px; 
+	border-width: 1px;
+	border-color: #000000;
+	color: black;
+}
+
+#yonetimpanel p{
+	font-size: 17px;
+	font-family: verdana;
+}
+
+#yonetimpanel input[type=button]{
+	width: 100px;
+	height: 40px;
+	border-radius: 7px;
+	background-color: #9fff95;
+	font-family: verdana;
+	font-size: 13px;
+	margin-left: 100px;
+}
+		
+#yonetimpanel img{
+	width: 130px;
+	border-radius: 65px;
+	margin-top: 80px;
+	margin-left: 50px;
+
+}
+
+.popup_open{
+	width: 100px;
+	height: 30px;
+	border-radius: 15px;
+	background-color: #40EC8B;
+}
+
+
+#popup{  
+font-size: 20px; 
+border-radius: 20px;
+color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#popup {
+position: fixed;
+font-family: verdana;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background: rgba(0, 0, 0, 0.4);
+z-index: 99999;
+opacity:0;
+transition: opacity 400ms linear;
+pointer-events: none;
+}
+#popup:target {
+opacity:1;
+pointer-events: auto;
+}
+#popup > div {
+width: 200px;
+height: 100px;
+margin: auto;
+padding: 20px 20px 13px 20px;
+background: white;
+border-radius: 10px;
+}

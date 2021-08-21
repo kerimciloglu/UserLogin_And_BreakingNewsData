@@ -1,0 +1,81 @@
+<DOCTYPE html>
+<html>
+	<head>
+		
+		<meta charset="utf-8">
+		<title>Staj Ödev4 Admin</title>
+		<link rel="stylesheet" href="admin.css">
+		<script type="text/JavaScript"></script>	
+	
+	</head>
+
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+	$(function(){
+	haberGetir();
+	});
+	function haberGetir(){
+	$("tabloGetir").empty();
+		$.ajax({
+            type: "POST",
+            url: 'https://www.milliyet.com.tr/rss/rssnew/gundemrss.xml',
+            dataType:'xml',
+			success: function(response)
+            {
+			console.log(response);
+			var tabloOlustur='<table id="tablo">';
+			var sayi=0;
+			$(response).find('channel item').each(function(){
+			 sayi=sayi+1;
+			 var description =$(this).find('description').text().split('/>');	
+			 var image=description[0];
+			 var detail=description[1];
+			 var title=$(this).find('title').text(); 
+			 var haber=$(this).find("atom\\:link").attr("href");
+			 tabloOlustur=tabloOlustur+'<tr data-href="'+haber+'" ondblclick="haberAc(this);" id="'+sayi+' "><td><button onclick="sil(this);" ">Sil</button></td>';
+			 tabloOlustur=tabloOlustur+'<td class="sayi">'+sayi+'</td>';
+			 tabloOlustur=tabloOlustur+'<td class="resim">'+image+'</td>';
+			 tabloOlustur=tabloOlustur+'<td class="baslik">'+title+'</td>';
+			 tabloOlustur=tabloOlustur+'<td class="detay">'+detail+'</td><tr>';
+			});
+			 tabloOlustur=tabloOlustur+'</table>';
+			 $("#tabloGetir").append(tabloOlustur);
+			 $("#tablo td img").css("width","100px");$("#tablo td img").css("height","100px");
+			 $(".resim").css("width","120px");$(".resim").css("height","120px");$(".resim").css("text-align","center");
+			 $(".baslik").css("width","250px");$(".baslik").css("height","250px");$(".baslik").css("text-align","center");
+			 $("td:odd").css("background-color","#1DF9F9");
+		   }
+       }); 
+
+	 }
+	   function haberGetir2(){
+	   location.reload();
+	   }
+	    function sil(sayi){
+		var x = confirm("Haberi silmek istiyor musunuz?");
+		if(x){
+		$(sayi).closest('tr[id]').remove();
+		}
+		}	
+
+		function haberAc(tr){
+			window.open($(tr).attr("data-href"));
+		}
+		</script>
+	
+		<button style="background-color:green; color:white;" onclick="haberGetir2();">Son Dakika Haberleri İçin Tıklayınız!</button>
+		<table id="tablo">
+			<thead>
+				<tr>
+					<th style="width: 52px; height: 30px; background-color: #1DF9F9"></th>			
+					<th style="width: 120px; height: 30px; background-color: #1DF9F9">Resim</th>
+					<th style="width: 254px; height: 30px; background-color: #1DF9F9">Haber Başlığı</th>
+					<th style="width: 910px; height: 30px; background-color: #1DF9F9">Detay</th>
+				</tr>
+			</thead>
+	</table>
+		<div id="tabloGetir"></div>
+		
+</body>
+</html>	
